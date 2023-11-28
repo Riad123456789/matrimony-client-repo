@@ -18,6 +18,8 @@ import { FcGoogle } from "react-icons/fc";
 import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { gettoken, saveuser } from '../Api/auth';
+import { imageUpload } from '../Api/util';
+
 
 
 
@@ -43,13 +45,16 @@ export default function SignUp() {
     const password = data.get('password')
     const photo = data.get('Photo')
 
-
-    console.log(name, Email, password, photo.name)
+    
+    console.log(photo)
     try {
-      const result = await createUser(Email, password)
-      await updateUserProfile(name, photo.name)
 
-      // console.log(result)
+      const imageData = await imageUpload(photo)
+
+      console.log(imageData)
+      const result = await createUser(Email, password)
+      await updateUserProfile(name, imageData?.data?.display_url)
+
       await saveuser(result?.user)
       await gettoken(result?.user?.email)
       alert('success')

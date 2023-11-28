@@ -31,14 +31,14 @@ function Navbar() {
 
     const { user, logOut } = useContext(AuthContext)
 
-
     const Home = <NavLink to={'/'}>Home</NavLink>
-    const Dashboard = <NavLink to={'/dashboard'}>{user ? 'Dashboard' : ""}</NavLink>
+    const Dashboard = <NavLink to={'/dashboardLayout'}>{user ? 'Dashboard' : ""}</NavLink>
     const ContactUs = <NavLink to={'/register'}>Contact Us</NavLink>
+    const Biodatas = <NavLink to={'/allbiodata'}>Biodatas</NavLink>
 
 
 
-    const pages = [Home, 'Biodatas', 'About Us', ContactUs, Dashboard];
+    const pages = [Home, Biodatas, 'About Us', ContactUs, Dashboard];
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -53,13 +53,17 @@ function Navbar() {
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
+
+
     const handleLogout = () => {
         logOut()
+            .then()
+            .catch()
     };
 
 
     return (
-        <AppBar position="sticky" sx={{backgroundColor:'indianred'}}>
+        <AppBar position="sticky" sx={{ backgroundColor: 'indianred' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -107,11 +111,11 @@ function Navbar() {
                             open={Boolean(anchorElNav)}
                             onClose={handleCloseNavMenu}
                             sx={{
-                                display: { xs: 'block', md: 'none',color:'red' },
+                                display: { xs: 'block', md: 'none', color: 'red' },
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page}  onClick={handleCloseNavMenu}>
+                                <MenuItem key={page} onClick={handleCloseNavMenu}>
                                     <Typography textAlign="center">{page}</Typography>
                                 </MenuItem>
                             ))}
@@ -152,9 +156,9 @@ function Navbar() {
                         <Tooltip >
                             {
                                 user ? <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, }}>
-                                    <Avatar alt="Remy Sharp" src={user.photoURL} />
-                                </IconButton> :
-
+                                    <Avatar alt="Remy Sharp" src={user?.photoURL} />
+                                </IconButton>
+                                 :
                                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                         <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                                     </IconButton>
@@ -171,18 +175,17 @@ function Navbar() {
                                     variant="contained"
                                     sx={{ color: 'Black', ml: 1 }}>
 
-                                    <Typography sx={{ fontWeight: '4', fontSize:13 , }}>
+                                    <Typography sx={{ fontWeight: '4', fontSize: 13, }}>
                                         <Link>Logout</Link>
                                     </Typography>
                                 </Button>
 
                                 :
                                 <Button
-                                    onClick={handleLogout}
                                     variant="contained"
                                     sx={{ color: 'Black', ml: 1 }}>
 
-                                    <Typography sx={{ fontWeight: '4', fontSize:13 , }}>
+                                    <Typography sx={{ fontWeight: '4', fontSize: 13, }}>
                                         <Link to={'/login'}>Log in</Link>
                                     </Typography>
                                 </Button>

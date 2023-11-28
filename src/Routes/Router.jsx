@@ -4,14 +4,40 @@ import {
 import MainLayout from "../layout/MainLayout";
 import LoginPage from "../Login/LoginPage";
 import RegisterPage from "../Register/RegisterPage";
-import Dashboard from "../layout/Dashboard";
+import DashboardLayout from "../layout/DashboardLayout";
+import EditBioData from "../DashboardPage/NoemalUserPages/EditBioData";
+import ViewBiodata from "../DashboardPage/NoemalUserPages/ViewBiodata";
+import MyContactRequestPage from "../DashboardPage/NoemalUserPages/MyContactRequestPage";
+import FavoritPage from "../DashboardPage/NoemalUserPages/FavoritPage";
+import GotMarriedPage from "../DashboardPage/NoemalUserPages/GotMarriedPage";
+import { getAlldata, getSingledata, } from "../Api/Biodata";
+import AllBiodata from "../AllBiodataPage/AllBiodata";
+import SingleDatapage from "../AllBiodataPage/AllBiodataCard/SingleDataCard/SingleDatapage";
+import CheckoutPage from "../AllBiodataPage/CheckoutPage/CheckoutPage";
+
+
 
 
 
 const Router = createBrowserRouter([
     {
         path: "/",
-        element: <MainLayout></MainLayout>,
+        element: <MainLayout></MainLayout>
+    },
+    {
+        path: '/allbiodata',
+        element: <AllBiodata></AllBiodata>,
+        loader: () => getAlldata()
+    },
+    {
+        path: '/singlebiodata/:id',
+        element: <SingleDatapage></SingleDatapage>,
+        loader:({params})=>getSingledata(params.id)
+    },
+    {
+        path:'/Checkout/:Biodataid',
+        element:<CheckoutPage></CheckoutPage>,
+        loader:({params})=>getAlldata(params.Biodataid)
     },
     {
         path: '/login',
@@ -21,9 +47,33 @@ const Router = createBrowserRouter([
         path: '/register',
         element: <RegisterPage></RegisterPage>
     },
+
     {
-        path: '/dashboard',
-        element: <Dashboard></Dashboard>
+        path: '/dashboardLayout',
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
+            {
+                path: 'EditBioData',
+                element: <EditBioData></EditBioData>,
+            },
+            {
+                path: 'ViewBiodata',
+                element: <ViewBiodata></ViewBiodata>,
+                loader: () => getAlldata()
+            },
+            {
+                path: 'MyContactRequest',
+                element: <MyContactRequestPage></MyContactRequestPage>,
+            },
+            {
+                path: 'FavouritesBiodata',
+                element: <FavoritPage></FavoritPage>,
+            },
+            {
+                path: 'GotMarried',
+                element: <GotMarriedPage></GotMarriedPage>,
+            }
+        ]
     }
 ]);
 
