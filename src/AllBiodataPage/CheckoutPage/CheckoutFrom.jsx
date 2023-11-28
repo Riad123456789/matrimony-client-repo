@@ -78,6 +78,7 @@ const CheckoutFrom = ({ Data }) => {
                 Mobile_Number: Mobile_Number,
                 Email: Email,
                 email: user?.email,
+                Name:user?.displayName,
                 statas: "Pending",
             }
             try {

@@ -24,10 +24,16 @@ export const getSingledata = async (id) => {
 export const favoriteBiodata = async datainfo => {
     const { data } = await axiosSecure.post(`/favoriteData`, datainfo)
     return data
-
-
-
 }
+
+
+
+export const AllfavoriteBiodata = async (email) => {
+    const { data } = await axiosSecure.get(`/AllfavoriteBiodata/${email}`)
+    return data
+}
+
+
 
 
 

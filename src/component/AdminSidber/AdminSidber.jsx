@@ -21,9 +21,9 @@ const AdminSidber = () => {
 
     const Home = <Link to="/"><Typography>Home</Typography></Link>
     const EditBiodata = <Link to="EditBiodata"><Typography>Admin Dashboard</Typography></Link>
-    const ViewBiodata = <Link to="ViewBiodata"><Typography>Manage Users</Typography></Link>
+    const ManageUsers = <Link to="ManageUsers"><Typography>Manage Users</Typography></Link>
     const MyContactRequest = <Link to="MyContactRequest"><Typography>Approved Premium</Typography></Link>
-    const FavouritesBiodata = <Link to="FavouritesBiodata"><Typography>Approved Contact Request</Typography></Link>
+    const ApprovedContact = <Link to="ApprovedContact"><Typography>Approved Request</Typography></Link>
    
 
     const Logout = <Typography> Logout</Typography>
@@ -41,17 +41,17 @@ const AdminSidber = () => {
 
         <Box>
             <List>
-                {[Home, EditBiodata, ViewBiodata, MyContactRequest, FavouritesBiodata].map((text, index) => (
+                {[Home, EditBiodata, ManageUsers, MyContactRequest, ApprovedContact].map((text, index) => (
                     <ListItem key={text}  disablePadding >
                         <ListItemButton>
-                            {/* <ListItemIcon>
+                            <ListItemIcon>
                                 {index % 6 === 0 ? < HomeIcon></HomeIcon> : ""}
                                 {index % 6 === 1 ? <EditRoadIcon></EditRoadIcon> : ""}
                                 {index % 6 === 2 ? < PreviewIcon></PreviewIcon> : ""}
                                 {index % 6 === 3 ? <RequestPageIcon></RequestPageIcon> : ""}
                                 {index % 6 === 4 ? <BookmarkAddIcon sx={{border:1}}></BookmarkAddIcon> : ""}
                                 {index % 6 === 5 ? <SupervisorAccountIcon></SupervisorAccountIcon> : ""}
-                            </ListItemIcon> */}
+                            </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItemButton>
                     </ListItem>

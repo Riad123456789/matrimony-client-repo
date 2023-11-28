@@ -14,7 +14,9 @@ import { getAlldata, getSingledata, } from "../Api/Biodata";
 import AllBiodata from "../AllBiodataPage/AllBiodata";
 import SingleDatapage from "../AllBiodataPage/AllBiodataCard/SingleDataCard/SingleDatapage";
 import CheckoutPage from "../AllBiodataPage/CheckoutPage/CheckoutPage";
-
+import ContuctsReqPage from "../DashboardPage/AdminPages/contuctsReqPage";
+import { getAllRequestInfo } from "../Api/payment";
+import ManageUsersPage from "../DashboardPage/AdminPages/ManageUsersPage";
 
 
 
@@ -32,12 +34,12 @@ const Router = createBrowserRouter([
     {
         path: '/singlebiodata/:id',
         element: <SingleDatapage></SingleDatapage>,
-        loader:({params})=>getSingledata(params.id)
+        loader: ({ params }) => getSingledata(params.id)
     },
     {
-        path:'/Checkout/:Biodataid',
-        element:<CheckoutPage></CheckoutPage>,
-        loader:({params})=>getAlldata(params.Biodataid)
+        path: '/Checkout/:Biodataid',
+        element: <CheckoutPage></CheckoutPage>,
+        loader: ({ params }) => getAlldata(params.Biodataid)
     },
     {
         path: '/login',
@@ -72,6 +74,19 @@ const Router = createBrowserRouter([
             {
                 path: 'GotMarried',
                 element: <GotMarriedPage></GotMarriedPage>,
+            },
+
+
+            // adminroutes............................>
+
+            {
+                path: 'ApprovedContact',
+                element: <ContuctsReqPage></ContuctsReqPage>,
+                loader: () => getAllRequestInfo()
+            },
+            {
+                path: 'ManageUsers',
+                element: <ManageUsersPage></ManageUsersPage>,
             }
         ]
     }

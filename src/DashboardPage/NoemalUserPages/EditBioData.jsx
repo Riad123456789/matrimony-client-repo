@@ -9,6 +9,7 @@ import { FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/mate
 import { useContext } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import { getBiodata } from '../../Api/Biodata';
+import { imageUpload } from '../../Api/util';
 
 
 
@@ -18,6 +19,10 @@ export default function SignUp() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
+
+        const image = data.get('Photo')
+        const imageData = await imageUpload(image)
+
         const Biodata = {
             Email: data.get('Email'),
             Type: data.get('Type'),
@@ -26,7 +31,7 @@ export default function SignUp() {
             Height: parseInt(data.get('Height')),
             Weight: parseInt(data.get('Weight')),
             Age: parseInt(data.get('Age')),
-            Photo: data.get('Photo'),
+            Photo: imageData?.data?.display_url,
             Occupation: data.get('Occupation'),
             Race: data.get('Race'),
             Permanent_Division: data.get('Permanent Division'),
@@ -67,7 +72,7 @@ export default function SignUp() {
                 >
 
                     <Typography component="h1" variant="h5">
-                      ----------------- Edit Your Biodata ----------------
+                        ----------------- Edit Your Biodata ----------------
                     </Typography>
 
                 </Box>

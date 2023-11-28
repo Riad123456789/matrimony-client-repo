@@ -41,6 +41,8 @@ export default function CheckoutPage() {
             })
     }, [])
 
+
+
     return (
         <ThemeProvider theme={defaultTheme}>
             <Navbar></Navbar>
@@ -69,13 +71,14 @@ export default function CheckoutPage() {
                             margin="normal"
                             required
                             fullWidth
-                            name="Self biodataId"
+                            name="SelfbiodataId"
                             label="Self biodataId"
                             type="number"
 
 
                         />
                         <TextField
+
                             margin="normal"
                             required
                             fullWidth

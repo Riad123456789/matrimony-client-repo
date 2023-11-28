@@ -29,8 +29,8 @@ const ViewBiodata = () => {
     // console.log(biodata, user.email)
 
     return (
-        <div>
-         {biodata?.map(item => <BiodataCard key={item._id} biodata={item} ></BiodataCard>)}
+        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3 mt-4">
+            {biodata?.map(item => <BiodataCard key={item._id} biodata={item} ></BiodataCard>)}
         </div>
     );
 };

@@ -2,7 +2,7 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Navbar from "../../../SharedComponent/Navbar";
 import Footer from "../../../SharedComponent/Footer";
 import { useContext, useEffect, useState } from "react";
-import { favoriteBiodata, getAlldata,} from "../../../Api/Biodata";
+import { favoriteBiodata, getAlldata, } from "../../../Api/Biodata";
 import SimilerBiodataCard from "./SimilerBiodataCard";
 import { AuthContext } from "../../../provider/AuthProvider";
 import useRole from "../../../hooks/useRole";
@@ -107,17 +107,24 @@ const SingleDatapage = () => {
                                 }
                             </div>
                             <div className="flex justify-between ">
-                                <button onClick={HandleSubmit} className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Add to favourites</button>
 
 
-                           
-                                    {role === 'Normal' &&
-                                        <Link to={`/Checkout/:${Biodataid}`}>
-                                            <button
-                                                type="submit"
-                                                className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Request Contact Information</button></Link>
-                                    }
-                         
+                                {
+                                    role === 'Premium' && 'Normal' &&
+
+                                    <button onClick={HandleSubmit} className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Add to favourites</button>
+                                }
+
+
+
+
+                                {role === 'Normal' &&
+                                    <Link to={`/Checkout/:${Biodataid}`}>
+                                        <button
+                                            type="submit"
+                                            className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Request Contact Information</button></Link>
+                                }
+
 
 
                             </div>
