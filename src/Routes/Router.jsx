@@ -17,6 +17,9 @@ import CheckoutPage from "../AllBiodataPage/CheckoutPage/CheckoutPage";
 import ContuctsReqPage from "../DashboardPage/AdminPages/contuctsReqPage";
 import { getAllRequestInfo } from "../Api/payment";
 import ManageUsersPage from "../DashboardPage/AdminPages/ManageUsersPage";
+import ApprovedPremium from "../DashboardPage/AdminPages/ApprovedPremium";
+import PrivateRoute from "../privateRoute/PrivateRoute";
+import AboutUsPage from "../AboutusPage/AboutUsPage";
 
 
 
@@ -28,12 +31,16 @@ const Router = createBrowserRouter([
     },
     {
         path: '/allbiodata',
-        element: <AllBiodata></AllBiodata>,
+        element: <PrivateRoute><AllBiodata></AllBiodata></PrivateRoute>,
         loader: () => getAlldata()
     },
     {
+        path: "/AboutUs",
+        element: <AboutUsPage></AboutUsPage>
+    },
+    {
         path: '/singlebiodata/:id',
-        element: <SingleDatapage></SingleDatapage>,
+        element: <PrivateRoute><SingleDatapage></SingleDatapage></PrivateRoute>,
         loader: ({ params }) => getSingledata(params.id)
     },
     {
@@ -79,15 +86,20 @@ const Router = createBrowserRouter([
 
             // adminroutes............................>
 
+
+            {
+                path: 'ManageUsers',
+                element: <ManageUsersPage></ManageUsersPage>,
+            },
+            {
+                path: 'ApprovedPremium',
+                element: <ApprovedPremium></ApprovedPremium>,
+            },
             {
                 path: 'ApprovedContact',
                 element: <ContuctsReqPage></ContuctsReqPage>,
                 loader: () => getAllRequestInfo()
             },
-            {
-                path: 'ManageUsers',
-                element: <ManageUsersPage></ManageUsersPage>,
-            }
         ]
     }
 ]);

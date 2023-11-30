@@ -11,22 +11,23 @@ import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 
 
-
-
-
 const Sidber = () => {
 
   const { logOut } = useContext(AuthContext)
   const Naviget = useNavigate()
 
+
+
+
   const Home = <Link to="/"><Typography>Home</Typography></Link>
   const EditBiodata = <Link to="EditBiodata"><Typography>Edit Biodata</Typography></Link>
   const ViewBiodata = <Link to="ViewBiodata"><Typography>View Biodata</Typography></Link>
-  const MyContactRequest = <Link to="MyContactRequest"><Typography>My Contact Request</Typography></Link>
   const FavouritesBiodata = <Link to="FavouritesBiodata"><Typography> Favourites Biodata</Typography></Link>
+  const MyContactRequest = <Link to="MyContactRequest"><Typography>My Contact Request</Typography></Link>
+
   const GotMarried = <Link to="GotMarried"><Typography> Got Married</Typography> </Link>
-  
-  const Logout = <Typography> Logout</Typography> 
+
+  const Logout = <Typography> Logout</Typography>
 
 
   const HandleLogout = () => {

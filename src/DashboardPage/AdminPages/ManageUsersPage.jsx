@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getusers } from "../../Api/auth";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import ManageUserCard from "./ManageuserCard/ManageUserCard";
@@ -7,14 +7,18 @@ import ManageUserCard from "./ManageuserCard/ManageUserCard";
 const ManageUsersPage = () => {
     const [Data, setdata] = useState()
 
-    try {
-        getusers()
-            .then(data => {
-                setdata(data)
-            })
-    } catch (error) {
-        console.log(error)
-    }
+    useEffect(() => {
+
+        try {
+            getusers()
+                .then(data => {
+                    setdata(data)
+                })
+        } catch (error) {
+            console.log(error)
+        }
+
+    }, [])
 
     return (
         <div>
@@ -22,9 +26,10 @@ const ManageUsersPage = () => {
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell> User Name</TableCell>
-                            <TableCell align="right"> User Email</TableCell>
-                            <TableCell align="right">Role</TableCell>
+                            <TableCell sx={{fontSize:19}}> User Email </TableCell>
+                            <TableCell sx={{fontSize:19}} align="right"> User Name</TableCell>
+                            <TableCell sx={{fontSize:19}} align="right"></TableCell>
+                            <TableCell sx={{fontSize:19}} align="right">Role</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

@@ -33,12 +33,13 @@ function Navbar() {
 
     const Home = <NavLink to={'/'}>Home</NavLink>
     const Dashboard = <NavLink to={'/dashboardLayout'}>{user ? 'Dashboard' : ""}</NavLink>
+    const AboutUs = <NavLink to={'/AboutUs'}>About Us</NavLink>
     const ContactUs = <NavLink to={'/register'}>Contact Us</NavLink>
     const Biodatas = <NavLink to={'/allbiodata'}>Biodatas</NavLink>
 
 
 
-    const pages = [Home, Biodatas, 'About Us', ContactUs, Dashboard];
+    const pages = [Home, Biodatas, AboutUs, ContactUs, Dashboard];
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -158,7 +159,7 @@ function Navbar() {
                                 user ? <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, }}>
                                     <Avatar alt="Remy Sharp" src={user?.photoURL} />
                                 </IconButton>
-                                 :
+                                    :
                                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                         <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                                     </IconButton>

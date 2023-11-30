@@ -17,7 +17,7 @@ import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../provider/AuthProvider';
 import { useContext } from 'react';
 import { gettoken, saveuser } from '../Api/auth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 
@@ -30,6 +30,7 @@ const defaultTheme = createTheme();
 export default function SignIn() {
   const { signIn, signInWithGoogle, } = useContext(AuthContext)
   const Navigate = useNavigate()
+  const Location = useLocation();
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -43,7 +44,7 @@ export default function SignIn() {
       await saveuser(result?.user)
       await gettoken(result?.user?.email)
       alert('success')
-      Navigate('/')
+      Navigate(Location?.state ? Location.state : "/")
 
     } catch (error) {
       console.log(error)

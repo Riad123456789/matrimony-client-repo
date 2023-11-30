@@ -8,9 +8,11 @@ import { AuthContext } from '../../provider/AuthProvider';
 import { SaveRequestInfo, paymentIntent } from '../../Api/payment';
 import { useNavigate } from 'react-router-dom';
 
-const CheckoutFrom = ({ Data }) => {
+const CheckoutFrom = ({ Data, id }) => {
     const stripe = useStripe()
     const elements = useElements()
+
+    // console.log(id)
 
     const [cardError, setCardError] = useState('')
     const [clientSecret, setClientSecret] = useState('')
@@ -61,6 +63,7 @@ const CheckoutFrom = ({ Data }) => {
                     billing_details: {
                         email: user?.email,
                         name: user?.displayName,
+
                     },
                 },
             })
@@ -78,7 +81,8 @@ const CheckoutFrom = ({ Data }) => {
                 Mobile_Number: Mobile_Number,
                 Email: Email,
                 email: user?.email,
-                Name:user?.displayName,
+                Name: user?.displayName,
+                selfBiodataId: parseInt(id),
                 statas: "Pending",
             }
             try {

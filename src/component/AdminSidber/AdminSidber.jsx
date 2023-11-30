@@ -22,8 +22,8 @@ const AdminSidber = () => {
     const Home = <Link to="/"><Typography>Home</Typography></Link>
     const EditBiodata = <Link to="EditBiodata"><Typography>Admin Dashboard</Typography></Link>
     const ManageUsers = <Link to="ManageUsers"><Typography>Manage Users</Typography></Link>
-    const MyContactRequest = <Link to="MyContactRequest"><Typography>Approved Premium</Typography></Link>
-    const ApprovedContact = <Link to="ApprovedContact"><Typography>Approved Request</Typography></Link>
+    const ApprovedPremium = <Link to="ApprovedPremium"><Typography>Approved Premium</Typography></Link>
+    const ApprovedContact = <Link to="ApprovedContact"><Typography> contact Request</Typography></Link>
    
 
     const Logout = <Typography> Logout</Typography>
@@ -41,7 +41,7 @@ const AdminSidber = () => {
 
         <Box>
             <List>
-                {[Home, EditBiodata, ManageUsers, MyContactRequest, ApprovedContact].map((text, index) => (
+                {[Home, EditBiodata, ManageUsers, ApprovedPremium, ApprovedContact].map((text, index) => (
                     <ListItem key={text}  disablePadding >
                         <ListItemButton>
                             <ListItemIcon>

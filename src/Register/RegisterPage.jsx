@@ -19,6 +19,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { gettoken, saveuser } from '../Api/auth';
 import { imageUpload } from '../Api/util';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -33,7 +34,7 @@ const defaultTheme = createTheme();
 export default function SignUp() {
 
   const { createUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext)
-
+  const navigat = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,7 +46,7 @@ export default function SignUp() {
     const password = data.get('password')
     const photo = data.get('Photo')
 
-    
+
     console.log(photo)
     try {
 
@@ -58,6 +59,7 @@ export default function SignUp() {
       await saveuser(result?.user)
       await gettoken(result?.user?.email)
       alert('success')
+      navigat("/")
 
     } catch (error) {
       console.log(error)
@@ -73,6 +75,7 @@ export default function SignUp() {
       await saveuser(result?.user)
       await gettoken(result?.user?.email)
       alert('success')
+      navigat("/")
 
     } catch (error) {
       console.log(error)

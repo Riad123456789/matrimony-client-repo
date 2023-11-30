@@ -35,6 +35,7 @@ const SingleDatapage = () => {
     const email = user?.email
     const [role] = useRole()
     const navigate = useNavigate()
+
     useEffect(() => {
         getAlldata()
             .then(data => {
@@ -78,30 +79,28 @@ const SingleDatapage = () => {
             console.log(error)
         }
     }
-
-
     return (
         <div>
             <Navbar></Navbar>
             <div className=" md:flex ">
 
-                <div className="p-20 flex-1">
+                <div className="ml-32 flex-1">
                     <div className="max-w-sm  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <a href="#">
-                            <img className="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
+                            <img className="p-4 w-full h-72 object-contain rounded-t-lg" src={Photo} alt="product image" />
                         </a>
                         <div className="p-5">
                             <a href="#">
-                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{Type}</h5>
                             </a>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400"><span className="text-base text-red-700"> Date of birth : </span>{Date_of_birth}</p>
 
                             <div>
-                                {role === 'Premium' &&
+                                {role === 'premium' &&
                                     <p>{Email}</p>
 
                                 }
-                                {role === 'Premium' &&
+                                {role === 'premium' &&
                                     <p>{Mobile_Number}</p>
 
                                 }
@@ -110,7 +109,7 @@ const SingleDatapage = () => {
 
 
                                 {
-                                    role === 'Premium' && 'Normal' &&
+                                    role === 'premium' && 'Normal' &&
 
                                     <button onClick={HandleSubmit} className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Add to favourites</button>
                                 }
@@ -125,8 +124,6 @@ const SingleDatapage = () => {
                                             className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Request Contact Information</button></Link>
                                 }
 
-
-
                             </div>
                         </div>
 
@@ -135,7 +132,7 @@ const SingleDatapage = () => {
 
                 <div className="flex-1 ">
                     <div>
-                        {type?.map(item => <SimilerBiodataCard key={item._id} item={item}></SimilerBiodataCard>)}
+                        {type?.slice(0, 1).map(item => <SimilerBiodataCard key={item._id} item={item}></SimilerBiodataCard>)}
                     </div>
                 </div>
             </div>

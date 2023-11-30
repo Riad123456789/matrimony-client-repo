@@ -135,7 +135,7 @@ export default function DashboardLayout() {
             }
 
             {
-              role === 'Premium' &&
+              role === 'premium' &&
               <Sidber></Sidber>
             }
 

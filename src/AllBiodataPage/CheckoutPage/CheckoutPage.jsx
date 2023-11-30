@@ -30,6 +30,7 @@ export default function CheckoutPage() {
     const { Biodataid } = useParams()
     const id = (Biodataid.slice(1, 2))
     const { user } = useContext(AuthContext)
+    const [selfId, setselfid] = useState('')
 
     useEffect(() => {
         getAlldata()
@@ -42,6 +43,11 @@ export default function CheckoutPage() {
     }, [])
 
 
+
+
+
+
+    console.log(selfId)
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -74,7 +80,7 @@ export default function CheckoutPage() {
                             name="SelfbiodataId"
                             label="Self biodataId"
                             type="number"
-
+                            onChange={(e) => setselfid(e.target.value)}
 
                         />
                         <TextField
@@ -92,7 +98,7 @@ export default function CheckoutPage() {
 
                         <Box sx={{ p: 2, border: 1 }}>
                             <Elements stripe={stripePromise}>
-                                <CheckoutFrom Data={Data}></CheckoutFrom>
+                                <CheckoutFrom Data={Data} id={selfId}></CheckoutFrom>
                             </Elements>
                         </Box>
                     </Box>

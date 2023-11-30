@@ -27,10 +27,12 @@ export default function SignUp() {
             Email: data.get('Email'),
             Type: data.get('Type'),
             Name: data.get('Name'),
+            FatherName: data.get('FatherName'),
+            MotherName: data.get('MotherName'),
             Date_of_birth: data.get('Date of birth'),
             Height: parseInt(data.get('Height')),
             Weight: parseInt(data.get('Weight')),
-            Age: parseInt(data.get('Age')),
+            Age: data.get('Age'),
             Photo: imageData?.data?.display_url,
             Occupation: data.get('Occupation'),
             Race: data.get('Race'),
@@ -40,7 +42,7 @@ export default function SignUp() {
             Expected_Partner_Height: parseInt(data.get('Expected Partner Height')),
             Expected_Partner_Weight: parseInt(data.get('Expected Partner Weight')),
             Mobile_Number: parseInt(data.get('Mobile Number')),
-
+            BiodataStatas:"",
         };
         // console.log(Biodata)
 
@@ -197,6 +199,30 @@ export default function SignUp() {
                                 type='date'
                             />
                         </Grid>
+
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                autoComplete="given-name"
+                                name="FatherName"
+                                required
+                                fullWidth
+                                id="FatherName"
+                                label="FatherName"
+
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                autoComplete="given-name"
+                                name="MotherName"
+                                required
+                                fullWidth
+                                id="MotherName"
+                                label="MotherName"
+
+                            />
+                        </Grid>
+
                         <Grid item xs={12} sm={6}>
                             <FormControl fullWidth>
                                 <InputLabel id="demo-simple-select-label">Race</InputLabel>

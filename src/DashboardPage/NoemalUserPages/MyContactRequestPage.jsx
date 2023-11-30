@@ -14,15 +14,14 @@ const MyContactRequestPage = () => {
         getAllRequestInfo()
             .then(data => {
                 if (user.email) {
-                    const Filtered = data.filter(item => item.Email === user.email)
+                    const Filtered = data.filter(item => item.email == user?.email)
                     setdata(Filtered)
                 }
 
             })
-
     }, [user?.email])
 
-
+    console.log(Data)
     return (
         <div>
             <TableContainer component={Paper} >
@@ -30,13 +29,11 @@ const MyContactRequestPage = () => {
                     <TableHead>
                         <TableRow>
                             <TableCell>Name</TableCell>
-                            <TableCell align="right">Email</TableCell>
-                            <TableCell align="right">id</TableCell>
+                            <TableCell align="right">Biodata Id</TableCell>
+                            <TableCell align="right">Status</TableCell>
                             <TableCell align="right">Mobile Number</TableCell>
-                            <TableCell align="right">statsus</TableCell>
+                            <TableCell align="right">Email</TableCell>
                             <TableCell align="right">Delete Request</TableCell>
-                          
-
                         </TableRow>
                     </TableHead>
                     <TableBody>

@@ -16,11 +16,9 @@ const ViewBiodata = () => {
         getAlldata()
             .then(data => {
                 if (user.email) {
-
                     const Filtered = data.filter(item => item.Email === user.email)
                     setbiodata(Filtered)
                 }
-
             })
 
     }, [user?.email])
